@@ -1,13 +1,12 @@
 terraform {
-  source = "../../modules/all-in-one" # can link to github repo/registry, can be pinned to versions
+  source = "../../..//modules/all-in-one" # can link to github repo/registry, can be pinned to versions
 }
 
 include "root" {
   path = find_in_parent_folders()
 }
 
-inputs {
-    # organization comes from root terragrunt.hcl, token comes from the one that's one level above
+inputs = {
     repo_name = "tg-managed-all-in-one-repo"
     description = "Repository managed by terragrunt, uses all-in-one module"
     protected_branch_pattern = "main"
