@@ -12,6 +12,10 @@ include "org-specific" {
 
 dependency "repo" {
     config_path = "../repository"
+
+    mock_outputs = {
+      repository_id = "temporary-dummy-id"
+    }
 }
 
 inputs = {
