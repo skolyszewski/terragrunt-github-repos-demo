@@ -1,8 +1,14 @@
 terraform {
     before_hook "sops_decrypt_token" {
         commands = ["apply", "plan"]
-        execute  = ["sops", "--decrypt", "${dirname(dirname(get_terragrunt_dir()))}/token-org2.txt.enc", ">", "../../token-org2.txt.decrypted"]
-  }
+        execute  = [
+            "sops",
+            "--decrypt",
+            "${get_terragrunt_dir()}/${path_relative_from_include()}/token-org2.txt.enc",
+            ">",
+            "${get_terragrunt_dir()}/${path_relative_from_include()}/token-org2.txt.decrypted"
+        ]
+    }
 }
 
 inputs = {
