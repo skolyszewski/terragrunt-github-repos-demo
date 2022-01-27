@@ -6,6 +6,10 @@ include "root" {
   path = find_in_parent_folders()
 }
 
+include "org-specific" {
+  path = find_in_parent_folders("org-specific.hcl")
+}
+
 inputs = {
     repo_name = "tg-managed-all-in-one-repo"
     description = "Repository managed by terragrunt, uses all-in-one module"
